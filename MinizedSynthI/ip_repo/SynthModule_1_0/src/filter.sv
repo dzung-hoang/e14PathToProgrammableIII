@@ -39,13 +39,13 @@ module filter (
     moving_average_lpf lpf_uut(
         .clk(clk),
         .reset(reset),
-        .order(cutoff_freq),
+        .order(cutoff_freq[7:0]),
         .signal_in(pcm_in),
         .signal_out(lpf_pcm_out)
     );
     
-        
-    always begin
+    
+    always @(*) begin
         if (eg_amount >0) begin
             pcm_out = lpf_pcm_out;
         end else begin

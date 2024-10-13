@@ -13,11 +13,8 @@ module pdm_microphone
     output [15:0] mic_pcm_data,
     output        mic_data_valid,
 
-
     output        mic_clk,
-    input         mic_pdm_data,
-    output        mic_lrsel
-
+    input         mic_pdm_data
     );
 
    logic [2:0]      data_reg; 
@@ -53,7 +50,7 @@ module pdm_microphone
 
       );
 
-   logic [31:0] cic_out_data;
+   logic [15:0] cic_out_data;
    logic        cic_out_valid;
 
    cic_compiler_0 pdm_to_pcm
@@ -67,8 +64,6 @@ module pdm_microphone
       .m_axis_data_tvalid(cic_out_valid)        // output wire m_axis_data_tvalid
       );
 
-
-   assign mic_lrsel = 0;
    assign mic_pcm_data = cic_out_data;
    assign mic_data_valid = cic_out_valid;
 

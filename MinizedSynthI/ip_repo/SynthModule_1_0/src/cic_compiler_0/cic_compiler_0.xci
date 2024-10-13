@@ -2,9 +2,8 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "cic_compiler_0",
-    "cell_name": "SynthModule_v1_0_S00_AXI_inst/synth_module_1/microphone/pdm_to_pcm",
     "component_reference": "xilinx.com:ip:cic_compiler:4.0",
-    "ip_revision": "16",
+    "ip_revision": "19",
     "gen_directory": "../../../../zynqsoundsynthesizer/zynqsoundsynthesizer.tmp/synthmodule_v1_0_project/SynthModule_v1_0_project.gen/sources_1/ip/cic_compiler_0",
     "parameters": {
       "component_parameters": {
@@ -81,24 +80,23 @@
         "BASE_BOARD_PART": [ { "value": "avnet.com:minized:part0:1.3" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
         "DEVICE": [ { "value": "xc7z007s" } ],
+        "NEXTGEN_VERSAL": [ { "value": "0" } ],
         "PACKAGE": [ { "value": "clg225" } ],
         "PREFHDL": [ { "value": "VERILOG" } ],
         "SILICON_REVISION": [ { "value": "" } ],
         "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
         "SPEEDGRADE": [ { "value": "-1" } ],
         "STATIC_POWER": [ { "value": "" } ],
-        "TEMPERATURE_GRADE": [ { "value": "" } ],
-        "USE_RDI_CUSTOMIZATION": [ { "value": "TRUE" } ],
-        "USE_RDI_GENERATION": [ { "value": "TRUE" } ]
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
-        "IPREVISION": [ { "value": "16" } ],
+        "IPREVISION": [ { "value": "19" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../zynqsoundsynthesizer/zynqsoundsynthesizer.tmp/synthmodule_v1_0_project/SynthModule_v1_0_project.gen/sources_1/ip/cic_compiler_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2024.1.2" } ],
         "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },

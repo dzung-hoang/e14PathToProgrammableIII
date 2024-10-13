@@ -9,7 +9,7 @@ module lfsr #(parameter NUM_BITS = 31)
    input logic clk,
    input logic reset,
    input logic enable,
-   output logic [NUM_BITS-1:0] lfsr_data
+   output logic [15:0] lfsr_data // 16-bit output
    );
  
   logic [NUM_BITS:1] lfsr_reg = 0;

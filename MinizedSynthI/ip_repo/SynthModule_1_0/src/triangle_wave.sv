@@ -21,7 +21,7 @@ module triangle_wave
     
     // signal declaration
     logic [DATA_WIDTH-1:0] data_reg;
-    logic [DATA_WIDTH-1:0] data;    
+    logic [DATA_WIDTH-1:0] data;
     
     // read operation
     always_ff @(posedge clk)
@@ -38,5 +38,5 @@ module triangle_wave
       end    
     end   
     
-    assign dout =  $signed(data << 9) - $signed(16'h8000);  // offset biass  
+    assign dout =  $signed(data_reg << 9) - $signed(16'h8000);  // offset biass  
 endmodule

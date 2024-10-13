@@ -95,51 +95,50 @@ module synth_module #(PHASE_ACC_WIDTH = 30)(
     logic [15:0] lfoo_output; // LFO oscillator output
     logic lfoo_pulse_out; //  LFO Oscillator pulse output 
     
-//    // lfo filter outputs
-    logic [15:0] lfof_output; // lfo filter output
-    logic lfof_pulse_out; //  Oscillator 1 pulse output 
+    // lfo filter outputs
+    logic [15:0] lfof_output; // LFO filter output
+    logic lfof_pulse_out; //  LFO filter pulse output 
     
     
     // Oscillator 1 outputs
     logic [15:0] osc1_pcm_out; // Oscillator 1 PCM output 
     logic osc1_pulse_out; //  Oscillator 1 pulse output 
     
-//    // Oscillator 2 outputs
+    // Oscillator 2 outputs
     logic [15:0] osc2_pcm_out; // Oscillator 2 PCM output 
     logic osc2_pulse_out; //  Oscillator 2 pulse output 
     
-//    // Noise / Oscillator 3 outputs
+    // Noise / Oscillator 3 outputs
     logic [15:0] osc3_pcm_out; // Oscillator 3 PCM output 
     logic osc3_pulse_out; //  Oscillator 3 pulse output 
     
     // Microphone Outputs
-    logic [15:0] mic_pcm_out; // Microphone PCM output 
+    logic [15:0] mic_pcm_out; // Microphone PCM output
     logic mic_data_valid; //  Microphone PDM to PCM conversion data valid
+    logic [15:0] mic_pcm_out_safe; // validated Microphone PCM output
     
     // Mixer outputs
     logic [15:0] mix_pcm_out; // Mixer PCM output 
     
     // amplifier ADSR amplitude output
-     logic [15:0] adsra_amp;
-     logic [15:0] adsra_rt_amp;
-     logic [15:0] adsra_selected;
+    logic [15:0] adsra_rt_amp;
+    logic [15:0] adsra_selected;
      
-     // filter ADSR amplitude output
-     logic [15:0] adsrf_amp;
-     logic [15:0] adsrf_rt_amp;
-     logic [15:0] adsrf_selected;
+    // filter ADSR amplitude output
+    logic [15:0] adsrf_amp;
+    logic [15:0] adsrf_rt_amp;
+    logic [15:0] adsrf_selected;
     
     // Amplifier outputs
     logic [15:0] amp_pcm_out;
     
-//    filter outputs
+    // filter outputs
     logic [15:0] filter_pcm_out;
     
     
     logic [PHASE_ACC_WIDTH-1:0] lfoo_extended;
-    logic [PHASE_ACC_WIDTH-1:0] lfof_extended;
+//    logic [PHASE_ACC_WIDTH-1:0] lfof_extended;
     
-    logic adsrf_idle;
     logic adsrf_rt_idle;
     logic adsrf_nrt_idle;
     
@@ -147,8 +146,8 @@ module synth_module #(PHASE_ACC_WIDTH = 30)(
     logic adsra_nrt_idle;
     
     
-//    // Keep The range is from 0.01Hz to 100Hz
-//    // instantiate lfo oscillator
+    // Keep The range is from 0.01Hz to 100Hz
+    // instantiate lfo oscillator
     ddfs #(.PHASE_ACC_WIDTH(PHASE_ACC_WIDTH)) lfoo(.clk(clk),
         .reset(reset),
         .freq_carrier_ctrl_word(lfoo_fccw),
@@ -164,13 +163,13 @@ module synth_module #(PHASE_ACC_WIDTH = 30)(
     assign lfoo_extended = {{ 14{lfoo_output[15]}},lfoo_output}; 
     
     // extend sign to 30 bits    
-    assign lfof_extended = {{ 14{lfof_output[15]}},lfof_output}; 
+//    assign lfof_extended = {{ 14{lfof_output[15]}},lfof_output}; 
 
 
     
     
-//    // Keep The range is from up to +/- 5 octaves. Amounts above 20KHz or below 20 Hz are clipped
-//    // instantiate lfo filter
+    // Keep The range is from up to +/- 5 octaves. Amounts above 20KHz or below 20 Hz are clipped
+    // instantiate lfo filter
     ddfs #(.PHASE_ACC_WIDTH(PHASE_ACC_WIDTH)) lfof(.clk(clk),
         .reset(reset),
         .freq_carrier_ctrl_word(lfof_fccw),
@@ -194,7 +193,7 @@ module synth_module #(PHASE_ACC_WIDTH = 30)(
         .wave_type(osc1_wt)//.wave_type( 3'b001)
         );
         
-//   // instantiate oscillator 2 osc_2
+   // instantiate oscillator 2 osc_2
     ddfs #(.PHASE_ACC_WIDTH(PHASE_ACC_WIDTH)) osc2(.clk(clk),
         .reset(reset),
         .freq_carrier_ctrl_word(osc2_fccw),
@@ -237,7 +236,7 @@ module synth_module #(PHASE_ACC_WIDTH = 30)(
         .lvl_2(mix_lvl_osc2),
         .input_3(osc3_pcm_out),// .input_3(osc3_pcm_out),
         .lvl_3(mix_lvl_osc3),
-        .input_4(mic_pcm_out),
+        .input_4(mic_pcm_out_safe),
         .lvl_4(mix_lvl_mic),
         .pcm_out(mix_pcm_out)
         );
@@ -251,11 +250,12 @@ module synth_module #(PHASE_ACC_WIDTH = 30)(
             adsra_selected = adsra_amp;
             adsrf_selected = adsrf_amp;
        end
-     end   
+     end
      
      assign adsra_idle = adsra_nrt_idle & adsra_rt_idle & adsrf_nrt_idle & adsrf_rt_idle;
 
-        
+     assign mic_pcm_out_safe = mic_data_valid ? mic_pcm_out : 16'b0;
+
      // instantiate amplifier ADSR amplitude generator
       adsr adsra(
           .clk(clk),
@@ -283,7 +283,7 @@ module synth_module #(PHASE_ACC_WIDTH = 30)(
           .adsr_idle(adsra_rt_idle)
           );
           
-//      // instantiate filter ADSR amplitude generator
+      // instantiate filter ADSR amplitude generator
       adsr adsrf(
           .clk(clk),
           .reset(reset),
@@ -317,16 +317,16 @@ module synth_module #(PHASE_ACC_WIDTH = 30)(
           .envelope(adsra_selected),
           .pcm_out(amp_pcm_out));
           
-//      // instantiate filter
+      // instantiate filter
       filter filter_unit(
           .clk(clk),
           .reset(reset),
           .fccw(osc1_fccw),
           .pcm_in(amp_pcm_out),
-          .cutoff_freq(fcut),
-          .resonance_lvl(fres),
-          .eg_amount(feg), //EG AMOUNT Determines how much the Filter Envelope Generator (EG) adds to or subtracts from the Filter Cutoff control setting.
-          .envelope(adsrf_rt_amp),
+          .cutoff_freq(fcut[15:0]),
+          .resonance_lvl(fres[15:0]),
+          .eg_amount(feg[15:0]), //EG AMOUNT Determines how much the Filter Envelope Generator (EG) adds to or subtracts from the Filter Cutoff control setting.
+          .envelope(adsrf_selected),
           .modulation(lfof_output),
           .pcm_out(filter_pcm_out)
       );

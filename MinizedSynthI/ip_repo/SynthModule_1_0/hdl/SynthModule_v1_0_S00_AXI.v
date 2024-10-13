@@ -955,12 +955,12 @@
     synth_module synth_module_1 (
      .clk(S_AXI_ACLK),
      .reset(~S_AXI_ARESETN), // S_AXI_ARESETN is active low
-     .osc1_fccw(slv_reg1), // Pitch(), oscillator 1 frequency carrier ctrl word
+     .osc1_fccw(osc1_fccw), // Pitch(), oscillator 1 frequency carrier ctrl word
      .osc1_focw(osc1_focw), // Detune(), oscillator 1 frequency offset ctrl word
      .osc1_pho(osc1_pho), // Phase shift(), oscillator 1 phase offset ctrl word
      .osc1_wt(osc1_wt), // oscillator 1 wave type
      .mix_lvl_osc1(mix_lvl_osc1), // oscillator 1 volume level
-     .osc2_fccw(slv_reg4), // Pitch(), oscillator 1 frequency carrier ctrl word
+     .osc2_fccw(osc2_fccw), // Pitch(), oscillator 1 frequency carrier ctrl word
      .osc2_focw(osc2_focw), // Detune(), oscillator 1 frequency offset ctrl word
      .osc2_pho(osc2_pho), // Phase shift(), oscillator 1 phase offset ctrl word
      .osc2_wt(osc2_wt), // oscillator 2 wave type

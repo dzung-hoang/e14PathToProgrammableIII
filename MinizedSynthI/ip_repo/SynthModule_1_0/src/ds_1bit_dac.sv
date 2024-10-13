@@ -31,15 +31,15 @@ output logic pdm_out
     
     // signal declarations
     localparam BIAS = 2 ** (W-1); // {1'b1, (W-2){1'b0}};
-    logic [W:0] pcm_biased;
-    logic [W:0] acc_next;
-    logic [W:0] acc_reg;
+    logic [W+1:0] pcm_biased;
+    logic [W+2:0] acc_next;
+    logic [W+2:0] acc_reg;
     
     // shift the range from [-2^(W-1) -1 , 2^(W-1)-1] to [0, 2^W-1]
     assign pcm_biased = {pcm_in[W - 1], pcm_in} + BIAS;
     
     // signal treated as unsigned number in delta-sigma modulation
-    assign acc_next = {1'b0, acc_reg[W-1:0]} + pcm_biased;
+    assign acc_next = {2'b0, acc_reg[W-1:0]} + pcm_biased;
     
     // accumulation register
     always_ff @(posedge clk, posedge reset)

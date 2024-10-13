@@ -1,21 +1,21 @@
--- (c) Copyright 1995-2023 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-- (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
--- of Xilinx, Inc. and is protected under U.S. and
--- international copyright and other intellectual property
--- laws.
+-- of AMD and is protected under U.S. and international copyright
+-- and other intellectual property laws.
 -- 
 -- DISCLAIMER
 -- This disclaimer is not a license and does not grant any
 -- rights to the materials distributed herewith. Except as
 -- otherwise provided in a valid license issued to you by
--- Xilinx, and to the maximum extent permitted by applicable
+-- AMD, and to the maximum extent permitted by applicable
 -- law: (1) THESE MATERIALS ARE MADE AVAILABLE "AS IS" AND
--- WITH ALL FAULTS, AND XILINX HEREBY DISCLAIMS ALL WARRANTIES
+-- WITH ALL FAULTS, AND AMD HEREBY DISCLAIMS ALL WARRANTIES
 -- AND CONDITIONS, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING
 -- BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, NON-
 -- INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE; and
--- (2) Xilinx shall not be liable (whether in contract or tort,
+-- (2) AMD shall not be liable (whether in contract or tort,
 -- including negligence, or under any other theory of
 -- liability) for any loss or damage of any kind or nature
 -- related to, arising under or in connection with these
@@ -24,11 +24,11 @@
 -- (including loss of data, profits, goodwill, or any type of
 -- loss or damage suffered as a result of any action brought
 -- by a third party) even if such damage or loss was
--- reasonably foreseeable or Xilinx had been advised of the
+-- reasonably foreseeable or AMD had been advised of the
 -- possibility of the same.
 -- 
 -- CRITICAL APPLICATIONS
--- Xilinx products are not designed or intended to be fail-
+-- AMD products are not designed or intended to be fail-
 -- safe, or for use in any application requiring fail-safe
 -- performance, such as life-support or safety devices or
 -- systems, Class III medical devices, nuclear facilities,
@@ -37,7 +37,7 @@
 -- injury, or severe property or environmental damage
 -- (individually and collectively, "Critical
 -- Applications"). Customer assumes the sole risk and
--- liability of any use of Xilinx products in Critical
+-- liability of any use of AMD products in Critical
 -- Applications, subject only to applicable laws and
 -- regulations governing limitations on product liability.
 -- 
@@ -47,14 +47,14 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:ip:cic_compiler:4.0
--- IP Revision: 16
+-- IP Revision: 19
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-LIBRARY cic_compiler_v4_0_16;
-USE cic_compiler_v4_0_16.cic_compiler_v4_0_16;
+LIBRARY cic_compiler_v4_0_19;
+USE cic_compiler_v4_0_19.cic_compiler_v4_0_19;
 
 ENTITY pdm_to_pcm_cic_compiler IS
   PORT (
@@ -70,7 +70,7 @@ END pdm_to_pcm_cic_compiler;
 ARCHITECTURE pdm_to_pcm_cic_compiler_arch OF pdm_to_pcm_cic_compiler IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF pdm_to_pcm_cic_compiler_arch: ARCHITECTURE IS "yes";
-  COMPONENT cic_compiler_v4_0_16 IS
+  COMPONENT cic_compiler_v4_0_19 IS
     GENERIC (
       C_COMPONENT_NAME : STRING;
       C_FILTER_TYPE : INTEGER;
@@ -130,14 +130,14 @@ ARCHITECTURE pdm_to_pcm_cic_compiler_arch OF pdm_to_pcm_cic_compiler IS
       event_tlast_missing : OUT STD_LOGIC;
       event_halted : OUT STD_LOGIC
     );
-  END COMPONENT cic_compiler_v4_0_16;
+  END COMPONENT cic_compiler_v4_0_19;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF pdm_to_pcm_cic_compiler_arch: ARCHITECTURE IS "cic_compiler_v4_0_16,Vivado 2022.2";
+  ATTRIBUTE X_CORE_INFO OF pdm_to_pcm_cic_compiler_arch: ARCHITECTURE IS "cic_compiler_v4_0_19,Vivado 2024.1.2";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF pdm_to_pcm_cic_compiler_arch : ARCHITECTURE IS "pdm_to_pcm_cic_compiler,cic_compiler_v4_0_16,{}";
+  ATTRIBUTE CHECK_LICENSE_TYPE OF pdm_to_pcm_cic_compiler_arch : ARCHITECTURE IS "pdm_to_pcm_cic_compiler,cic_compiler_v4_0_19,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF pdm_to_pcm_cic_compiler_arch: ARCHITECTURE IS "pdm_to_pcm_cic_compiler,cic_compiler_v4_0_16,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=cic_compiler,x_ipVersion=4.0,x_ipCoreRevision=16,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_COMPONENT_NAME=pdm_to_pcm_cic_compiler,C_FILTER_TYPE=1,C_NUM_STAGES=5,C_DIFF_DELAY=1,C_RATE=50,C_INPUT_WIDTH=2,C_OUTPUT_WIDTH=16,C_USE_DSP=1,C_HAS_ROUNDING=0,C_NUM_CHANNELS=1,C_RATE_TYPE=0,C_MIN_RATE=50,C_MAX_RATE=50,C_SAMPLE_FREQ=1,C_CLK_FREQ=41,C_USE_STREAMING_INTERFACE=1,C_FAMILY=zynq" & 
-",C_XDEVICEFAMILY=zynq,C_C1=22,C_C2=21,C_C3=20,C_C4=19,C_C5=19,C_C6=0,C_I1=31,C_I2=31,C_I3=31,C_I4=28,C_I5=24,C_I6=0,C_S_AXIS_CONFIG_TDATA_WIDTH=1,C_S_AXIS_DATA_TDATA_WIDTH=8,C_M_AXIS_DATA_TDATA_WIDTH=16,C_M_AXIS_DATA_TUSER_WIDTH=1,C_HAS_DOUT_TREADY=0,C_HAS_ACLKEN=0,C_HAS_ARESETN=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF pdm_to_pcm_cic_compiler_arch: ARCHITECTURE IS "pdm_to_pcm_cic_compiler,cic_compiler_v4_0_19,{x_ipProduct=Vivado 2024.1.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=cic_compiler,x_ipVersion=4.0,x_ipCoreRevision=19,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_COMPONENT_NAME=pdm_to_pcm_cic_compiler,C_FILTER_TYPE=1,C_NUM_STAGES=5,C_DIFF_DELAY=1,C_RATE=50,C_INPUT_WIDTH=2,C_OUTPUT_WIDTH=16,C_USE_DSP=1,C_HAS_ROUNDING=0,C_NUM_CHANNELS=1,C_RATE_TYPE=0,C_MIN_RATE=50,C_MAX_RATE=50,C_SAMPLE_FREQ=1,C_CLK_FREQ=41,C_USE_STREAMING_INTERFACE=1,C_FAMILY=zy" & 
+"nq,C_XDEVICEFAMILY=zynq,C_C1=22,C_C2=21,C_C3=20,C_C4=19,C_C5=19,C_C6=0,C_I1=31,C_I2=31,C_I3=31,C_I4=28,C_I5=24,C_I6=0,C_S_AXIS_CONFIG_TDATA_WIDTH=1,C_S_AXIS_DATA_TDATA_WIDTH=8,C_M_AXIS_DATA_TDATA_WIDTH=16,C_M_AXIS_DATA_TUSER_WIDTH=1,C_HAS_DOUT_TREADY=0,C_HAS_ACLKEN=0,C_HAS_ARESETN=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF aclk: SIGNAL IS "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF S_AXIS_CONFIG:M_AXIS_DATA:S_AXIS_DATA, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
@@ -150,7 +150,7 @@ ARCHITECTURE pdm_to_pcm_cic_compiler_arch OF pdm_to_pcm_cic_compiler IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TVALID";
 BEGIN
-  U0 : cic_compiler_v4_0_16
+  U0 : cic_compiler_v4_0_19
     GENERIC MAP (
       C_COMPONENT_NAME => "pdm_to_pcm_cic_compiler",
       C_FILTER_TYPE => 1,
