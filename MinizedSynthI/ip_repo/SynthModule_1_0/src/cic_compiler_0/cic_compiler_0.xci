@@ -4,7 +4,7 @@
     "xci_name": "cic_compiler_0",
     "component_reference": "xilinx.com:ip:cic_compiler:4.0",
     "ip_revision": "19",
-    "gen_directory": "../../../../zynqsoundsynthesizer/zynqsoundsynthesizer.tmp/synthmodule_v1_0_project/SynthModule_v1_0_project.gen/sources_1/ip/cic_compiler_0",
+    "gen_directory": ".",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "cic_compiler_0", "resolve_type": "user", "usage": "all" } ],
